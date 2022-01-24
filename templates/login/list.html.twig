@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+        <tr>
+          <th>{{ user.id }}</th>
+          <th>{{ user.email }}</th>
+
+            <td>
+              {% for role in user.roles %}
+                {{role ~ ' ,'}}
+              {% endfor %}
+            </td>
+          
+          <th>
+          <a class="btn btn-secondary" href = "#">Détails</a>  
+          <a class="btn btn-primary" href = "{{ path('user.edit', {'id': user.id}) }}">Modifier</a>  
+          </th> 
+          
+        </tr>
+        {% else %}
+          <tr>
+            <td colspan="4">Pas d'utilisateur dans la base</td>
+          </tr> 
+    {% endfor %}
+  </tbody>
+  
+</table>
+<a class="btn btn-info" href = "{{ path('user.new') }}"> Création nouveau Utilisateur </a>
+{% endblock %}
