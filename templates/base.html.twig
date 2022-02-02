@@ -28,7 +28,7 @@
            {#  faire disparaitre le menu #} 
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{ path('vin.list') }}">Gérer le stock</a>
+                    <a class="nav-link" aria-current="page" href="{{ path('vin.list', {robe : 'all'}) }}">Gérer le stock</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="{{ path('region_index')}}">gérer les régions</a>
@@ -48,7 +48,14 @@
             </ul>
             </div>
         </div>
-        </nav>    
+        </nav> 
+        {% for message in app.flashes('notif') %}
+            <div class="flash-notice alert alert-primary" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %} 
+
+
         <div class="container">
             {% block body %}{% endblock %}
         </div>

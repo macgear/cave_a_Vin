@@ -11,6 +11,7 @@
       <th scope="col">Contenance</th>
       <th scope="col">Robe</th>
       <th scope="col">Stock</th>
+      <th scope="col">Visuel</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -23,10 +24,12 @@
         <td>{{ vin.contenance }}</td>
         <td>{{ vin.robe }}</td>
         <td>{{ vin.qttStock }}</td>
+        <td>{{ vin.images }}</td> {# mettre une balise img voir la doc pour le faire voir generic URL #}
         <td><a class="btn btn-secondary" href='{{ path('vin.show', {id:vin.id}) }}'>Voir</a></td>
         </tr>
     {% endfor %}
   </tbody>
 </table>
-
+<br>
+<a class="btn btn-info" href = "{{ path('vin.new') }}"> Nouveau Vin </a>
 {% endblock %}

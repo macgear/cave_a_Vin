@@ -3,5 +3,51 @@
 {% block body %}
 
     <h1>Bienvenue sur la cave à vins ✅</h1>
+    <br>
+    <div class="row">
+        <div class="card col-4">
+            <div class="card-header">
+                Stock de la cave
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Nombre de bouteille : {{ stocks['total'] }} </h5>
+                <br>
+                <a href="{{ path('vin.list', {robe : 'all'}) }}" class="btn btn-primary">Voir le stock</a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="card col-4">
+            <div class="card-header">
+                Stock de blanc
+            </div>
+                    <div class="card-body">
+                <h5 class="card-title">Nombre de bouteille : {{ stocks['blanc'] }} </h5>
+                <br>
+                <a href="{{ path('vin.list', {robe : 'blanc'}) }}" class="btn btn-primary">Voir le stock</a>
+            </div>
+        </div> 
+        <div class="card col-4">
+            <div class="card-header">
+                Stock de rouge
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Nombre de bouteille : {{ stocks['rouge'] }} </h5>
+                <br>
+                <a href="{{ path('vin.list', {robe : 'rouge'}) }}" class="btn btn-primary">Voir le stock</a>
+            </div>
+        </div> 
+                <div class="card col-4">
+            <div class="card-header">
+                Stock de rosé
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Nombre de bouteille : {{ stocks['rose'] }} </h5>
+                <br>
+                <a href="{{ path('vin.list', {robe : 'rose'}) }}" class="btn btn-primary">Voir le stock</a>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

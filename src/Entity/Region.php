@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\RegionRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: RegionRepository::class)]
 class Region
@@ -13,6 +14,7 @@ class Region
     #[ORM\Column(type: 'integer')]
     private $id;
 
+    #[Assert\NotBlank (message: 'Le nom de la région ne peux pas étre vide')]
     #[ORM\Column(type: 'string', length: 255)]
     private $nom;
 
