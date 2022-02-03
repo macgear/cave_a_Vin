@@ -55,7 +55,7 @@ class VinController extends AbstractController
             $entityManager->persist($vin);
             $entityManager->flush();
 
-            return $this->redirectToRoute('vin.list', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('vin.list', ['robe'=>'all'], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('vin/formNew.html.twig', [
@@ -64,5 +64,17 @@ class VinController extends AbstractController
         ]);
     }
 
+    #[Route('/vin/delete/{id}', name: 'vin.delete')]
+    public function delete(Request $request, Vin $vin, EntityManagerInterface $entityManager): Response
+        {
+            $entityManager->remove($vin);
+            $entityManager->flush();
+        
+
+        return $this->redirectToRoute('vin.list', ['robe'=>'all'], Response::HTTP_SEE_OTHER);
+        }
+
+
+    
 
 }

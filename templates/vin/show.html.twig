@@ -12,6 +12,7 @@
       <th scope="col">Robe</th>
       <th scope="col">Stock</th>
       <th scope="col">Remarque</th>
+      <th scope="col">Supprimé</th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +24,7 @@
         <td>{{ vin.robe }}</td>
         <td>{{ vin.qttStock }}</td>
         <td>{{ vin.remarques }}</td>
+        <td><a class="btn btn-danger" href='{{ path('vin.delete', {id:vin.id}) }}'>Delete</td>
         
         </tr>
   </tbody>

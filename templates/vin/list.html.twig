@@ -1,5 +1,13 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+         <style>
+          img {
+            width : 100px;
+          }
+         </style>
+{% endblock %}
+
 {% block body %}
 
 <table class="table table-striped">
@@ -24,7 +32,7 @@
         <td>{{ vin.contenance }}</td>
         <td>{{ vin.robe }}</td>
         <td>{{ vin.qttStock }}</td>
-        <td>{{ vin.images }}</td> {# mettre une balise img voir la doc pour le faire voir generic URL #}
+        <td><img src="{{ vich_uploader_asset(vin, 'imageFile') }}" alt="{{ vin.nom }}"></td> {# mettre une balise img voir la doc pour le faire voir generic URL #}
         <td><a class="btn btn-secondary" href='{{ path('vin.show', {id:vin.id}) }}'>Voir</a></td>
         </tr>
     {% endfor %}

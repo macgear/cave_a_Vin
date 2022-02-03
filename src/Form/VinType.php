@@ -18,22 +18,7 @@ use Vich\UploaderBundle\Form\Type\VichImageType;
 class VinType extends AbstractType
 {
 
-    public function buildFormImages(FormBuilderInterface $builder, array $options): void
-    {
-
-        $builder->add('imageFile', VichImageType::class, [
-            'required' => false,
-            'allow_delete' => true,
-            'delete_label' => '...',
-            'download_label' => '...',
-            'download_uri' => true,
-            'image_uri' => true,
-            'imagine_pattern' => '...',
-            'asset_helper' => true,
-        ]);
-    }
-
-
+    
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -48,6 +33,9 @@ class VinType extends AbstractType
                     ]
                 
             ])
+
+            ->add('imageFile', VichImageType::class)
+
             ->add('qtt_stock', IntegerType::class, [
                 'label'=> 'quantité en stock',
                 'data' => 1

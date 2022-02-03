@@ -8,7 +8,9 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: VinRepository::class)]
-#[Vich\Uploadable]
+/**
+ * @Vich\Uploadable
+ */
 class Vin
 {
     #[ORM\Id]
@@ -37,14 +39,17 @@ class Vin
     #[ORM\ManyToOne(targetEntity: Region::class)]
     private $region;
 
-    #[Vich\UploadableField(mapping: 'image_vins', fileNameProperty: 'imageName', size: 'imageSize')]
+    /**
+     * @Vich\UploadableField(mapping="image_vins", fileNameProperty="imageName", size="imageSize")
+     * @var File
+     */
     private ?File $imageFile = null;
 
     #[ORM\Column(type: 'string')]
     private ?string $imageName = null;
 
     #[ORM\Column(type: 'integer')]
-    private ?int $imageSize = null;
+    private ?int $imageSize = 0;
 
     #[ORM\Column(type: 'datetime')]
     private ?\DateTimeInterface $updatedAt = null;
